@@ -952,6 +952,24 @@
     </div>
 
     <script>
+      // ————————————————————————————————————————————————
+      // Pré-remplissage du champ « Nom du cabinet » à partir
+      // du paramètre ?cabinetName=… puis nettoyage de l’URL
+      // ————————————————————————————————————————————————
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        const cabinet = params.get("cabinetName");
+        if (!cabinet) return; // aucun paramètre -> rien à faire
+
+        // Remplit le champ si présent dans le DOM
+        const input = document.getElementById("cabinetName");
+        if (input) input.value = decodeURIComponent(cabinet);
+
+        // Supprime le query-string pour ne pas afficher le nom dans l'URL
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, "", cleanUrl);
+      })();
+
       // Bootstrap validation
       (() => {
         "use strict";
