@@ -1,0 +1,61 @@
+:root {
+  --bs-primary: #ff6600;
+  --bs-primary-rgb: 255, 102, 0;
+  --bs-secondary: #00325a;
+  --bs-secondary-rgb: 0, 50, 90;
+  --bs-body-font-family: "Poppins", sans-serif;
+  --radius: 6px;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+}
+
+.btn-septeo {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-radius: var(--radius);
+  border: none;
+}
+.btn-septeo:hover,
+.btn-septeo:focus {
+  background-color: #cc5200;
+  color: #fff;
+}
+
+.table.septeo-table thead {
+  background-color: var(--bs-primary);
+  color: #fff;
+}
+
+.table.septeo-table tbody tr:nth-child(even) {
+  background-color: #fff5ec;
+}
+
+.alert-septeo {
+  border-color: var(--bs-primary);
+}
+
+/* Floating action bar shadow tweaking */
+#actionsBar {
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom background overrides requested */
+.bg-light {
+  background: linear-gradient(
+    135deg,
+    rgb(26, 41, 86) 0%,
+    rgb(46, 74, 158) 100%
+  ) !important;
+}
+
+.py-5 {
+  background: #e4e4e4 !important;
+}
+
+/* Placeholder text italic */
+input::placeholder,
+textarea::placeholder {
+  font-style: italic;
+}

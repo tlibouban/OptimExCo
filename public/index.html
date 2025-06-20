@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questionnaire Export Compta</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/css/theme-septeo.css" rel="stylesheet" />
+  </head>
+  <body class="bg-light">
+    <div class="container py-5">
+      <header class="d-flex align-items-center mb-4">
+        <img src="/img/logo-septeo.svg" alt="SEPTEO" height="40" class="me-3" />
+        <h1 class="h3 mb-0 fw-semibold">Questionnaire Export Compta</h1>
+        <a href="/consult.html" class="btn btn-sm btn-outline-secondary ms-auto"
+          >Consulter les questionnaires</a
+        >
+      </header>
+
+      <form id="questionnaireForm" class="needs-validation" novalidate>
+        <!-- Informations sur le cabinet -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Informations sur le cabinet</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="cabinetName" class="form-label"
+                >Nom du cabinet *</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="cabinetName"
+                name="cabinetName"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="contactName" class="form-label"
+                >Nom du contact *</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="contactName"
+                name="contactName"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email *</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="address" class="form-label">Adresse</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Cabinet Comptable -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Informations Cabinet Comptable</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="accountingFirmName" class="form-label"
+                >Nom du cabinet comptable</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="accountingFirmName"
+                name="accountingFirmName"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="accountingFirmContact" class="form-label"
+                >Contact cabinet comptable</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="accountingFirmContact"
+                name="accountingFirmContact"
+              />
+            </div>
+            <div class="col-12">
+              <label for="accountingFirmContactInfo" class="form-label"
+                >Coordonnées</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="accountingFirmContactInfo"
+                name="accountingFirmContactInfo"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Plan comptable -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Plan comptable</legend>
+          <div class="mb-3">
+            <label for="accountLength" class="form-label"
+              >Combien de caractères comportent les comptes dans le logiciel de
+              comptabilité ?</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="accountLength"
+              name="accountLength"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Quels sont vos comptes d'honoraires ? (par taux de TVA, par
+              responsable, par code d'activité,…)</label
+            >
+            <div id="honorairesContainer" class="repeat-group">
+              <div class="row g-2 repeat-row">
+                <div class="col-4">
+                  <input
+                    class="form-control"
+                    name="accountsHonorairesNumber[]"
+                    placeholder="707000"
+                  />
+                </div>
+                <div class="col-8">
+                  <input
+                    class="form-control"
+                    name="accountsHonorairesLabel[]"
+                    placeholder="Honoraires soumis à TVA"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Quels sont vos comptes de refacturation des frais ? (par taux de
+              TVA, par responsable, par code d'activité,…)</label
+            >
+            <div id="fraisContainer" class="repeat-group">
+              <div class="row g-2 repeat-row">
+                <div class="col-4">
+                  <input
+                    class="form-control"
+                    name="accountsFraisNumber[]"
+                    placeholder="708000"
+                  />
+                </div>
+                <div class="col-8">
+                  <input
+                    class="form-control"
+                    name="accountsFraisLabel[]"
+                    placeholder="Frais refacturés"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Quels sont vos comptes de refacturation des débours ? (par taux
+              de TVA, par responsable, par code d'activité,…)</label
+            >
+            <div id="deboursContainer" class="repeat-group">
+              <div class="row g-2 repeat-row">
+                <div class="col-4">
+                  <input
+                    class="form-control"
+                    name="accountsDeboursNumber[]"
+                    placeholder="467000"
+                  />
+                </div>
+                <div class="col-8">
+                  <input
+                    class="form-control"
+                    name="accountsDeboursLabel[]"
+                    placeholder="Débours non soumis"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Quels sont les comptes de TVA collectée ?</label
+            >
+            <div id="tvaCollecteContainer" class="repeat-group">
+              <div class="row g-2 repeat-row">
+                <div class="col-4">
+                  <input
+                    class="form-control"
+                    name="accountsTVACollecteNumber[]"
+                    placeholder="445000"
+                  />
+                </div>
+                <div class="col-8">
+                  <input
+                    class="form-control"
+                    name="accountsTVACollecteLabel[]"
+                    placeholder="TVA collectée"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Quels sont les comptes de trésorerie (caisse, banque) pour chaque
+              journal de trésorerie ?</label
+            >
+            <div id="tresorerieContainer" class="repeat-group">
+              <div class="row g-2 repeat-row">
+                <div class="col-md-2 col-4">
+                  <input
+                    class="form-control"
+                    name="tresorerieJournal[]"
+                    placeholder="B01"
+                  />
+                </div>
+                <div class="col-md-3 col-4">
+                  <input
+                    class="form-control"
+                    name="tresorerieNumber[]"
+                    placeholder="512000"
+                  />
+                </div>
+                <div class="col-md-7 col-4">
+                  <input
+                    class="form-control"
+                    name="tresorerieLabel[]"
+                    placeholder="Banque principale"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Si vous êtes en BIC avec option de la TVA sur encaissement,
+              utilisez-vous des comptes d'attente de TVA ?</label
+            >
+            <div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="tvaEncaissement"
+                  id="tvaEncaissementOui"
+                  value="Oui"
+                />
+                <label class="form-check-label" for="tvaEncaissementOui"
+                  >Oui</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="tvaEncaissement"
+                  id="tvaEncaissementNon"
+                  value="Non"
+                />
+                <label class="form-check-label" for="tvaEncaissementNon"
+                  >Non</label
+                >
+              </div>
+            </div>
+            <!-- Groupe de saisie détaillée (Code journal / Numéro / Libellé) -->
+            <div
+              id="tvaEncaissementDetailsContainer"
+              class="row g-2 mt-2 d-none"
+            >
+              <div class="col-md-3 col-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="tvaEncaissementJournal"
+                  placeholder="Code journal"
+                />
+              </div>
+              <div class="col-md-3 col-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="tvaEncaissementNumero"
+                  placeholder="Numéro"
+                />
+              </div>
+              <div class="col-md-6 col-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="tvaEncaissementLibelle"
+                  placeholder="Libellé"
+                />
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Logiciel comptable & Export -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Logiciel comptable</legend>
+          <div class="mb-3">
+            <label class="form-label d-block">Logiciels utilisés</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softCiel"
+                name="software[]"
+                value="CIEL"
+              /><label class="form-check-label" for="softCiel">CIEL</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softAidavocat"
+                name="software[]"
+                value="AIDAVOCAT"
+              /><label class="form-check-label" for="softAidavocat"
+                >AIDAVOCAT</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softCador"
+                name="software[]"
+                value="CADOR"
+              /><label class="form-check-label" for="softCador">CADOR</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softCegid"
+                name="software[]"
+                value="CEGID"
+              /><label class="form-check-label" for="softCegid">CEGID</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softCielComptaLiberale"
+                name="software[]"
+                value="CIELCOMPTALIBERAL"
+              /><label class="form-check-label" for="softCielComptaLiberale"
+                >CIEL Compta Libérale</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softCoala"
+                name="software[]"
+                value="COALA"
+              /><label class="form-check-label" for="softCoala">COALA</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softQuadratus"
+                name="software[]"
+                value="QUADRATUS"
+              /><label class="form-check-label" for="softQuadratus"
+                >QUADRATUS</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softEbp"
+                name="software[]"
+                value="EBP"
+              /><label class="form-check-label" for="softEbp">EBP</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softSageI7"
+                name="software[]"
+                value="SAGEI7"
+              /><label class="form-check-label" for="softSageI7">SAGE i7</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softSage"
+                name="software[]"
+                value="SAGE"
+              /><label class="form-check-label" for="softSage">SAGE</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="softAutre"
+                name="software[]"
+                value="AUTRE"
+              /><label class="form-check-label" for="softAutre">Autre</label>
+            </div>
+            <!-- Champ texte pour saisir le nom de l'application lorsque "Autre" est sélectionné -->
+            <input
+              type="text"
+              class="form-control mt-2 d-none"
+              id="softwareOtherName"
+              name="softwareOtherName"
+              placeholder="Nom de l'application"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block">Type de comptabilité ?</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="typeComptabilite"
+                value="BIC"
+                id="typeBIC"
+              /><label class="form-check-label" for="typeBIC"
+                >BIC (comptabilité d'engagement)</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="typeComptabilite"
+                value="BNC"
+                id="typeBNC"
+              /><label class="form-check-label" for="typeBNC"
+                >BNC (comptabilité recettes/dépenses)</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="typeComptabilite"
+                value="BNC+Clients"
+                id="typeBNCClients"
+              /><label class="form-check-label" for="typeBNCClients"
+                >BNC avec gestion de compte client</label
+              >
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block"
+              >Format du fichier d'export utilisé pour ce logiciel :</label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="exportFormatUsed[]"
+                value="txt"
+                id="fmtTxt"
+              /><label class="form-check-label" for="fmtTxt">.txt</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="exportFormatUsed[]"
+                value="csv"
+                id="fmtCsv"
+              /><label class="form-check-label" for="fmtCsv">.csv</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="exportFormatUsed[]"
+                value="tra"
+                id="fmtTra"
+              /><label class="form-check-label" for="fmtTra">.tra</label>
+            </div>
+            <input
+              type="text"
+              class="form-control mt-2"
+              id="exportFormatOther"
+              name="exportFormatOther"
+              placeholder="Autre format"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exportDataOrder" class="form-label"
+              >Quelles sont les données et l'ordre de ces données contenues dans
+              le fichier d'export utilisé pour votre logiciel de comptabilité
+              :</label
+            >
+            <textarea
+              class="form-control"
+              id="exportDataOrder"
+              name="exportDataOrder"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Paramétrage du libellé des écritures, quel est le contenu du
+              libellé :</label
+            >
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="labelFactures"
+              name="labelFactures"
+              placeholder="Libellé factures"
+            />
+            <input
+              type="text"
+              class="form-control"
+              id="labelReglements"
+              name="labelReglements"
+              placeholder="Libellé règlements"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="journalVenteCode" class="form-label"
+              >Quel est le code de votre journal de vente ?</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="journalVenteCode"
+              name="journalVenteCode"
+              placeholder="ex. : VEN"
+            />
+          </div>
+        </fieldset>
+
+        <!-- Compte Client & Débours -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Compte client</legend>
+          <div class="mb-3">
+            <label class="form-label d-block">Comptes auxiliaires (BIC)</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="auxType"
+                value="Numerique"
+                id="auxNum"
+              /><label class="form-check-label" for="auxNum">Numérique</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="auxType"
+                value="AlphaNum"
+                id="auxAlpha"
+              /><label class="form-check-label" for="auxAlpha"
+                >Alphanumérique</label
+              >
+            </div>
+            <input
+              type="text"
+              class="form-control mt-2"
+              id="auxTypeExample"
+              name="auxTypeExample"
+              placeholder="Exemple"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block">Comptes auxiliaires par</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="auxBy"
+                value="Client"
+                id="auxByClient"
+              /><label class="form-check-label" for="auxByClient">Client</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="auxBy"
+                value="Dossier"
+                id="auxByDossier"
+              /><label class="form-check-label" for="auxByDossier"
+                >Dossier</label
+              >
+            </div>
+            <input
+              type="text"
+              class="form-control mt-2"
+              id="auxByExample"
+              name="auxByExample"
+              placeholder="Exemple"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block">Comptes collectifs</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="collectifChoice"
+                value="Unique"
+                id="collUnique"
+              /><label class="form-check-label" for="collUnique">Unique</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="collectifChoice"
+                value="ParTVA"
+                id="collTVA"
+              /><label class="form-check-label" for="collTVA"
+                >Par taux TVA</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="collectifChoice"
+                value="Autre"
+                id="collAutre"
+              /><label class="form-check-label" for="collAutre">Autre</label>
+            </div>
+            <input
+              type="text"
+              class="form-control mt-2"
+              id="collectifExample"
+              name="collectifExample"
+              placeholder="Exemple"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label"
+              >Gestion des débours en comptabilité</label
+            >
+            <select
+              class="form-select"
+              id="deboursGestion"
+              name="deboursGestion"
+            >
+              <option value="">-- Sélectionnez --</option>
+              <option>Pas de gestion spécifique</option>
+              <option>Comptes tiers avec compte de provision</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block"
+              >Gérez-vous les débours avec un compte de tiers (46xx) ?</label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="deboursCompteTiers"
+                value="Oui"
+                id="deboursTiersOui"
+              /><label class="form-check-label" for="deboursTiersOui"
+                >Oui</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="deboursCompteTiers"
+                value="Non"
+                id="deboursTiersNon"
+              /><label class="form-check-label" for="deboursTiersNon"
+                >Non</label
+              >
+            </div>
+            <div class="mt-2">
+              <select
+                class="form-select"
+                id="deboursCompteTiersType"
+                name="deboursCompteTiersType"
+              >
+                <option value="">-- Sélectionnez type de compte --</option>
+                <option>Compte unique</option>
+                <option>Compte par client</option>
+                <option>Compte par dossier</option>
+                <option>Compte par huissier</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Règlements & fournisseurs -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Règlements & fournisseurs</legend>
+          <div class="mb-3">
+            <label class="form-label d-block"
+              >Regrouper les écritures de banque sur une même série ?</label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regroupeBanque"
+                value="Oui"
+                id="regBanqueOui"
+              /><label class="form-check-label" for="regBanqueOui">Oui</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="regroupeBanque"
+                value="Non"
+                id="regBanqueNon"
+              /><label class="form-check-label" for="regBanqueNon">Non</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label d-block"
+              >Utilisez-vous le module frais fournisseurs ?</label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="moduleFraisFournisseurs"
+                value="Oui"
+                id="fournOui"
+              /><label class="form-check-label" for="fournOui">Oui</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="moduleFraisFournisseurs"
+                value="Non"
+                id="fournNon"
+              /><label class="form-check-label" for="fournNon">Non</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Comptes de charge utilisés</label>
+            <textarea
+              class="form-control"
+              id="accountsCharge"
+              name="accountsCharge"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Comptes de TVA déductible</label>
+            <textarea
+              class="form-control"
+              id="accountsTVADeductible"
+              name="accountsTVADeductible"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="formatComptesFournisseurs" class="form-label"
+                >Format comptes fournisseurs</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="formatComptesFournisseurs"
+                name="formatComptesFournisseurs"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="compteCollectifFournisseur" class="form-label"
+                >Compte collectif fournisseur</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="compteCollectifFournisseur"
+                name="compteCollectifFournisseur"
+              />
+            </div>
+          </div>
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <label for="journalAchat" class="form-label"
+                >Journal d'achat</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="journalAchat"
+                name="journalAchat"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="libelleAchatReglement" class="form-label"
+                >Libellé écritures achat/règlement</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="libelleAchatReglement"
+                name="libelleAchatReglement"
+              />
+            </div>
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label d-block"
+              >Souhaitez vous créer un répertoire sur votre ordinateur pour
+              enregistrer le fichier exporté ?</label
+            >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="createExportDir"
+                value="Oui"
+                id="dirOui"
+              /><label class="form-check-label" for="dirOui">Oui</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="createExportDir"
+                value="Non"
+                id="dirNon"
+              /><label class="form-check-label" for="dirNon">Non</label>
+            </div>
+            <input
+              type="text"
+              class="form-control mt-2 d-none"
+              id="exportDirName"
+              name="exportDirName"
+              placeholder="Ex. : Nom du fichier (avec son chemin)"
+            />
+          </div>
+        </fieldset>
+
+        <!-- Questions avancées (extraites du questionnaire complet) -->
+        <fieldset class="border p-3 mb-4">
+          <legend class="w-auto px-2">Plan comptable (exhaustif)</legend>
+          <p class="text-muted">
+            Les champs suivants reprennent l'intégralité des rubriques du
+            questionnaire PDF. Renseignez autant de lignes que nécessaire dans
+            chaque zone.
+          </p>
+          <div class="mb-3">
+            <label for="accountLength" class="form-label"
+              >Nombre de caractères des comptes</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="accountLength"
+              name="accountLength"
+            />
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label"
+                >Comptes d'honoraires (Numéro – Libellé)</label
+              >
+              <textarea
+                class="form-control"
+                id="accountsHonoraires"
+                name="accountsHonoraires"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Comptes frais refacturés</label>
+              <textarea
+                class="form-control"
+                id="accountsFrais"
+                name="accountsFrais"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Comptes débours refacturés</label>
+              <textarea
+                class="form-control"
+                id="accountsDebours"
+                name="accountsDebours"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <label class="form-label">Comptes TVA collectée</label>
+              <textarea
+                class="form-control"
+                id="accountsTVACollecte"
+                name="accountsTVACollecte"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"
+                >Comptes trésorerie (caisse, banque) – Code journal ; Numéro ;
+                Libellé</label
+              >
+              <textarea
+                class="form-control"
+                id="accountsTresorerie"
+                name="accountsTresorerie"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+          <!-- D'autres blocs (logiciel, comptes clients, règlements, etc.) seraient insérés ici de la même manière -->
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+
+      <div id="alertPlaceholder" class="pt-4"></div>
+    </div>
+
+    <script>
+      // Bootstrap validation
+      (() => {
+        "use strict";
+        const form = document.querySelector(".needs-validation");
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      })();
+
+      const form = document.getElementById("questionnaireForm");
+      const alertPlaceholder = document.getElementById("alertPlaceholder");
+
+      // Barre d'actions flottante (Envoyer / Réinitialiser)
+      if (!document.getElementById("actionsBar")) {
+        const bar = document.createElement("div");
+        bar.id = "actionsBar";
+        bar.className =
+          "position-fixed bottom-0 start-0 end-0 bg-white border-top shadow p-3 d-flex justify-content-end gap-2";
+        bar.style.zIndex = "1100";
+
+        const resetBtn = document.createElement("button");
+        resetBtn.type = "button";
+        resetBtn.className = "btn btn-outline-secondary";
+        resetBtn.textContent = "Annuler";
+        resetBtn.addEventListener("click", () => {
+          form.reset();
+          form.classList.remove("was-validated");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        const sendBtn = document.createElement("button");
+        sendBtn.type = "button";
+        sendBtn.className = "btn btn-primary";
+        sendBtn.textContent = "Envoyer";
+        sendBtn.addEventListener("click", () => {
+          form.requestSubmit();
+        });
+
+        bar.appendChild(resetBtn);
+        bar.appendChild(sendBtn);
+        document.body.appendChild(bar);
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) return;
+
+        const formData = new FormData(form);
+        const payload = {};
+        for (const [key, value] of formData.entries()) {
+          if (payload[key]) {
+            /* gère les champs multiples (checkbox name="software[]", etc.) */
+            if (Array.isArray(payload[key])) {
+              payload[key].push(value);
+            } else {
+              payload[key] = [payload[key], value];
+            }
+          } else {
+            payload[key] = value;
+          }
+        }
+        payload.timestamp = new Date().toISOString();
+
+        try {
+          const res = await fetch("/api/questionnaire", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Erreur");
+          showAlert(
+            "Le questionnaire a été enregistré avec succès.",
+            "success"
+          );
+          form.reset();
+          form.classList.remove("was-validated");
+        } catch (err) {
+          showAlert(err.message, "danger");
+        }
+      });
+
+      function showAlert(message, type) {
+        alertPlaceholder.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible" role="alert">
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`;
+      }
+
+      // Fonction pour ajouter automatiquement une nouvelle ligne quand la dernière est remplie
+      function autoRepeat(container, minInputs = 2) {
+        container.addEventListener("input", () => {
+          const lastRow = container.querySelector(".repeat-row:last-child");
+          if (!lastRow) return;
+          const inputs = [...lastRow.querySelectorAll("input")];
+          const filled = inputs.filter((i) => i.value.trim() !== "");
+          if (filled.length === inputs.length) {
+            const clone = lastRow.cloneNode(true);
+            clone.querySelectorAll("input").forEach((i) => (i.value = ""));
+            container.appendChild(clone);
+          }
+        });
+      }
+
+      // Initialisation des groupes dynamiques
+      [
+        "honorairesContainer",
+        "fraisContainer",
+        "deboursContainer",
+        "tvaCollecteContainer",
+        "tresorerieContainer",
+      ].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) autoRepeat(el);
+      });
+
+      // Afficher/masquer le champ "Autre logiciel"
+      const softAutreCheckbox = document.getElementById("softAutre");
+      const softwareOtherInput = document.getElementById("softwareOtherName");
+      const toggleSoftwareOther = () => {
+        const show = softAutreCheckbox.checked;
+        softwareOtherInput.classList.toggle("d-none", !show);
+        softwareOtherInput.disabled = !show;
+        if (!show) softwareOtherInput.value = "";
+      };
+      if (softAutreCheckbox && softwareOtherInput) {
+        softAutreCheckbox.addEventListener("change", toggleSoftwareOther);
+        toggleSoftwareOther(); // initial state
+      }
+
+      // Afficher/masquer les détails TVA encaissement (Code journal / Numéro / Libellé)
+      const tvaEncaissementOui = document.getElementById("tvaEncaissementOui");
+      const tvaEncaissementNon = document.getElementById("tvaEncaissementNon");
+      const tvaDetailsContainer = document.getElementById(
+        "tvaEncaissementDetailsContainer"
+      );
+
+      const toggleTvaDetails = () => {
+        const show = tvaEncaissementOui_checked();
+        tvaDetailsContainer.classList.toggle("d-none", !show);
+        tvaDetailsContainer.querySelectorAll("input").forEach((i) => {
+          i.disabled = !show;
+          if (!show) i.value = "";
+        });
+      };
+
+      const tvaEncaissementOui_checked = () =>
+        tvaEncaissementOui && tvaEncaissementOui.checked;
+
+      [tvaEncaissementOui, tvaEncaissementNon]
+        .filter(Boolean)
+        .forEach((el) => el.addEventListener("change", toggleTvaDetails));
+
+      // initial state on load
+      if (tvaDetailsContainer) toggleTvaDetails();
+
+      // Préfixe "Ex. : " sur tous les placeholders s'il n'existe pas déjà
+      document
+        .querySelectorAll("input[placeholder], textarea[placeholder]")
+        .forEach((el) => {
+          const ph = el.getAttribute("placeholder") || "";
+          if (!/^\s*ex\./i.test(ph)) {
+            el.setAttribute("placeholder", `Ex. : ${ph}`.trim());
+          }
+        });
+
+      // Afficher/masquer le champ répertoire export
+      const dirOui = document.getElementById("dirOui");
+      const dirNon = document.getElementById("dirNon");
+      const exportDirInput = document.getElementById("exportDirName");
+
+      const toggleExportDirInput = () => {
+        const show = dirOui && dirOui.checked;
+        exportDirInput.classList.toggle("d-none", !show);
+        exportDirInput.disabled = !show;
+        if (!show) exportDirInput.value = "";
+      };
+
+      [dirOui, dirNon]
+        .filter(Boolean)
+        .forEach((el) => el.addEventListener("change", toggleExportDirInput));
+
+      // initial state
+      if (exportDirInput) toggleExportDirInput();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

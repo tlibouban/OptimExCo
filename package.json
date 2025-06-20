@@ -1,0 +1,16 @@
+{
+  "name": "questionnaire-export-compta",
+  "version": "1.0.0",
+  "description": "Formulaire client pour questionnaire export compta, avec stockage des réponses en JSON",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}

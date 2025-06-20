@@ -1,0 +1,293 @@
+
+--- Page 1 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+  
+
+
+--- Page 2 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+NOM DU CABINET :  __________________________________________________________________________  
+Personne à contacter :   _______________________________________________________________________  
+Coordonnées de la personne à contacter  : ________________________________ _______________________   
+ 
+NOM DU CABINET COMPTABLE :   ________________________________ ______________________________   
+Personne à contacter :   _______________________________________________________________________  
+Coordonnées de la personne à contacter  : ________________________________ _______________________   
+ 
+ 
+PLAN COMPTABLE  
+ 
+Combien de caractères comportent les comptes dans le logiciel de comptabilité ?  
+___________________________________________________________________________________________  
+ 
+Quels sont vos comptes d’honoraires ? (par taux de TVA, par responsable, par code d’activité,…)  
+Numéro de compte  Libellé  
+  
+  
+  
+ 
+Quels sont vos comptes de refacturation des frais  ?  (par taux de TVA, par responsable, par code d’activité,…)  
+Numéro de compte  Libellé  
+  
+  
+  
+ 
+Quels sont vos comptes de refacturation des débours ?  (par taux de TVA, par responsable, par code 
+d’activité,…)  
+Numéro de compte  Libellé  
+  
+  
+  
+ 
+ 
+
+--- Page 3 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+Quels sont les comptes de TVA collectée  ?  
+Numéro de compte  Libellé  
+  
+  
+ 
+Quels sont les comptes de trésorerie (caisse, banque) pour chaque journal de trésorerie ?  
+Code journal  Numéro de compte  Libellé  
+   
+   
+   
+ 
+ 
+Si vous êtes en BIC avec option de la TVA sur encaissement, utilisez -vous des comptes d'attente de TVA ?  
+ Oui 
+Code journal  Numéro de compte  Libellé  
+   
+ 
+ Non 
+ 
+  
+
+--- Page 4 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+LOGICIEL COMPTABLE  
+ 
+ CIEL  AIDAVOCAT   CADOR   CEGID   CIEL COMPTA LIBERALE  
+ COALA   QUADRATUS   EBP  SAGE   SAGE i7  
+ Autre, à préciser :  ________________________________________________________________________  
+ 
+ 
+Type de comptabilité  ? 
+ BIC (comptabilité d’engagement)  
+ BNC (comptabilité recettes/dépenses)  
+ BNC avec gestion de compte client  
+ 
+Format du fichier d'export utilisé pour ce logiciel :  
+ .txt 
+ .csv 
+ .tra 
+ Autre, à préciser : ............  
+(Si vous ne savez, pouvez -vous vous renseigner auprès de votre expert -comptable)  
+ 
+ 
+Quelles sont les données et l'ordre de ces données contenues dans le fichier d'export utilisé pour votre 
+logiciel de comptabilité  : (A renseigner obligatoirement  si le logiciel de comptabilité est "Autre" ) 
+___________________________________________________________________________________________  
+(Si vous ne savez, pouvez -vous vous renseigner auprès de votre expert -comptable)  
+ 
+ 
+Paramétrage du libellé des écritures, quel est le contenu du libellé :  
+- Pour les factures : __________________________________________________________________________  
+- Pour les règlements : ________________________________________________________________________  
+ 
+ 
+Quel est le code de votre journal de vente  ? 
+___________________________________________________________________________________________  
+ 
+
+--- Page 5 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+COMPTE CLIENT  
+Paramétrage des comptes auxiliaires, si la comptabilité est de type BIC  
+ Numérique  
+ Alphanumérique  
+Donnez exemple :  
+___________________________________________________________________________  
+ 
+ Par client  
+ Par dossier  
+Donnez exemple :  
+___________________________________________________________________________  
+ 
+Paramétrage des comptes collectifs, si la comptabilité est de type BIC  
+ Unique  
+ Par taux de TVA  
+ Autre  
+Donnez un exemple :  
+_________________________________________________________________________  
+COMPTE DEBOURS  
+Comment gérez -vous les débours en comptabilité  ? : 
+ Pas de gestion spécifique  
+ Les débours sont gérés sur compte tiers avec un compte de provision  
+Gérez vous  les débours avec un compte de tiers (46xx)?  
+ Oui 
+ Non 
+Si oui :  
+ Compte unique   Compte par client   Compte par dossier   Compte par huissier  
+ 
+
+--- Page 6 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+Avez vous  un compte collectif pour les débours ?  
+ Oui 
+ Non 
+Si oui, lequel ? ___________________________________________________________________________  
+ 
+REGLEMENTS  
+ 
+Pour les règlements souhaitez -vous regrouper les écritures de banque sur une même série ?  
+Par exemple il est possible de préciser le numéro de remise en banque dans la zone Série de NEO, et lors de l'export il y aur a qu'une seule ligne pour la banque 
+qui regroupera toutes les écritures avec le même numéro de série.  
+ 
+ Oui 
+ Non  
+ 
+Utilis ez vous  le module des frais fournisseurs dans SECIB NEO  pour  passe r les paiements de vos 
+huissiers  ? 
+ 
+Quels sont les comptes de charge utilisés ?  _______________________________________________________  
+Quels sont les comptes de TVA déductible ? _______________________________________________________  
+Quel est le format pour les comptes fournisseurs :  _________________________________________________  
+Compte collectif fournisseur : __________________________________________________________________  
+Quel est le journal d’achat ?  ___________________________________________________________________  
+Quel libellé pour les écritures d'achat et de règlement ? _____________________________________________  
+ 
+Souhaitez vous créer un répertoire sur votre ordinateur pour enregistrer le fichier exporté  ? 
+ Oui   Nom du fichier  : 
+ Non  
+ 
+ 
+ 
+ 
+ 
+
+--- Page 7 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+Pouvez -vous simulez une écriture de  : 
+ 
+Facture d’honoraires  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+    
+    
+ 
+ 
+Règlement d’une facture d’honoraires  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+ 
+ 
+Facture d’honoraires avec frais  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+    
+    
+ 
+ 
+Règlement d’une facture d’honoraires avec frais  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+ 
+
+--- Page 8 ---
+
+ 
+04 99 53 21 90 - info@secib.fr - www.secib.fr  
+Montpellier : 194 avenue de la Gare Sud de France 34970 LATTES | Paris : 14 rue Magellan - 75008 PARIS  
+RCS MONTPELLIER  : 350446803 | SARL AU CAPITAL DE  :  400  000€ | APE  : 5829C  
+SIRET  : 35044680300115 | N° DE TVA INTRACOMMUNAUTAIRE  : FR04350446803  
+ 
+ 
+ 
+Facture d’honoraires avec débours  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+    
+    
+ 
+ 
+Règlement d’une facture d’honoraires avec débours  : 
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+ 
+ 
+Une saisie de débours  
+N° COMPTE  LIBELLE    DEBIT  CREDIT  
+    
+    
+    
+    
+ 

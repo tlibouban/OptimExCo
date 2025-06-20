@@ -1,0 +1,5 @@
+# Ignorer le dossier temporaire
+/tmp/
+
+# Ignorer tous les fichiers contenus dans le dossier data
+/data/* 
