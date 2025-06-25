@@ -29,6 +29,7 @@ COPY --from=build /app .
 # Use a non-root user for security
 RUN addgroup -g 1001 -S appgroup && \
     adduser -S appuser -G appgroup -u 1001
+RUN chown -R appuser:appgroup /app
 USER appuser
 
 EXPOSE 3000
