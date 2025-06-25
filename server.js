@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
+const db = require("./db/index.js");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -143,6 +144,59 @@ app.put("/api/questionnaire/:cabinetName", (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Erreur lors de la mise à jour." });
+  }
+});
+
+// --- New API: créer un dossier ------------------------
+app.post("/api/dossier", async (req, res) => {
+  try {
+    const payload = req.body;
+
+    // Validation minimale
+    if (!payload || !payload.client || !payload.numeroDossier) {
+      return res
+        .status(400)
+        .json({ error: "Champs 'client' et 'numeroDossier' requis." });
+    }
+
+    // 1) upsert client
+    const clientResult = await db.query(
+      `INSERT INTO client(nom, type, erp, effectif, departement)
+       VALUES ($1, 'Prospect', $2, $3, $4)
+       ON CONFLICT (nom) DO UPDATE SET erp = EXCLUDED.erp RETURNING id`,
+      [
+        payload.client,
+        payload.logiciel || null,
+        payload.effectif || null,
+        payload.departement || null,
+      ]
+    );
+    const clientId = clientResult.rows[0].id;
+
+    // 2) create dossier
+    const dossierResult = await db.query(
+      `INSERT INTO dossier(client_id, numero_dossier, projet, logiciel_base, sens, effectif_snapshot, departement_snapshot, logiciel_autre, meta)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+       RETURNING id`,
+      [
+        clientId,
+        payload.numeroDossier,
+        payload.projet || null,
+        payload.logiciel || null,
+        payload.sens || null,
+        payload.effectif || null,
+        payload.departement || null,
+        payload.logicielAutre || null,
+        payload, // store full form as JSON meta for simplicité
+      ]
+    );
+
+    const dossierId = dossierResult.rows[0].id;
+
+    return res.json({ id: dossierId, message: "Dossier créé." });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erreur en base de données." });
   }
 });
 
