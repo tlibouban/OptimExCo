@@ -19,6 +19,9 @@ const API_PREFIX = process.env.API_PREFIX || "/api";
 // Dossier front-end pouvant être personnalisé (ex: "frontend")
 const FRONTEND_DIR = process.env.FRONTEND_DIR || "frontend";
 
+// URL back-end accessible depuis le navigateur (override possible)
+const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || null;
+
 // Middlewares
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
@@ -47,12 +50,16 @@ if (fs.existsSync(frontPath)) {
 // Route de configuration exposée au front (JSON)
 // --------------------------------------------------
 app.get("/config.json", (req, res) => {
+  // Calcul dynamique si BACKEND_BASE_URL non défini
+  const computedBaseUrl = `${req.protocol}://${req.get("host")}`;
+
   res.json({
     appName: process.env.APP_NAME || "OnBoardingClient",
     displayName: process.env.FRONTEND_DISPLAY_NAME || "OnBoardingClient",
     backendDisplayName:
       process.env.BACKEND_DISPLAY_NAME || "Questionnaire Export Compta",
     apiPrefix: API_PREFIX,
+    backendBaseUrl: BACKEND_BASE_URL || computedBaseUrl,
   });
 });
 
