@@ -4,17 +4,57 @@ const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 const db = require("./db/index.js");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
 
 const app = express();
+
+//-------------------------------------------------------------------------
+// Variables d'environnement et valeurs par défaut
+//-------------------------------------------------------------------------
 const PORT = process.env.PORT || 3000;
+const API_PREFIX = process.env.API_PREFIX || "/api";
+
+// Dossier front-end pouvant être personnalisé (ex: "frontend")
+const FRONTEND_DIR = process.env.FRONTEND_DIR || "frontend";
 
 // Middlewares
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("dev"));
 
-// Serve static files (front-end)
+// --------------------------------------------------
+// 1) Statique back-end (ancien répertoire public)
+// --------------------------------------------------
 app.use(express.static(path.join(__dirname, "public")));
+
+// --------------------------------------------------
+// 2) Statique front-end principal (dossier configurable)
+//    On cherche un dossier frère du backend, ex: ../frontend
+// --------------------------------------------------
+const frontPath = path.join(__dirname, "..", FRONTEND_DIR);
+if (fs.existsSync(frontPath)) {
+  app.use(express.static(frontPath));
+} else {
+  console.warn(
+    `⚠️  FRONTEND_DIR introuvable: ${frontPath}. Utilisation du répertoire racine du dépôt.`
+  );
+  app.use(express.static(path.join(__dirname, "..")));
+}
+
+// --------------------------------------------------
+// Route de configuration exposée au front (JSON)
+// --------------------------------------------------
+app.get("/config.json", (req, res) => {
+  res.json({
+    appName: process.env.APP_NAME || "OnBoardingClient",
+    displayName: process.env.FRONTEND_DISPLAY_NAME || "OnBoardingClient",
+    backendDisplayName:
+      process.env.BACKEND_DISPLAY_NAME || "Questionnaire Export Compta",
+    apiPrefix: API_PREFIX,
+  });
+});
 
 // Ensure data directory exists
 const DATA_DIR = path.join(__dirname, "data");
@@ -28,7 +68,7 @@ const sanitizeFileName = (name) => {
 };
 
 // API: Save questionnaire
-app.post("/api/questionnaire", (req, res) => {
+app.post(`${API_PREFIX}/questionnaire`, (req, res) => {
   const data = req.body;
   if (!data || !data.cabinetName) {
     return res
@@ -49,7 +89,7 @@ app.post("/api/questionnaire", (req, res) => {
 });
 
 // API: Retrieve questionnaire by cabinet name
-app.get("/api/questionnaire/:cabinetName", (req, res) => {
+app.get(`${API_PREFIX}/questionnaire/:cabinetName`, (req, res) => {
   const cabinetName = req.params.cabinetName;
   const fileName = sanitizeFileName(cabinetName) + ".json";
   const filePath = path.join(DATA_DIR, fileName);
@@ -72,7 +112,7 @@ app.get("/api/questionnaire/:cabinetName", (req, res) => {
 });
 
 // GET: List all questionnaires (with optional ?search= query string)
-app.get("/api/questionnaires", (req, res) => {
+app.get(`${API_PREFIX}/questionnaires`, (req, res) => {
   try {
     const search = (req.query.search || "").toString().toLowerCase();
 
@@ -111,7 +151,7 @@ app.get("/api/questionnaires", (req, res) => {
 });
 
 // PUT: Update an existing questionnaire (identified by current cabinetName in URL)
-app.put("/api/questionnaire/:cabinetName", (req, res) => {
+app.put(`${API_PREFIX}/questionnaire/:cabinetName`, (req, res) => {
   const originalCabinetName = req.params.cabinetName;
   const originalFile = sanitizeFileName(originalCabinetName) + ".json";
   const originalPath = path.join(DATA_DIR, originalFile);
@@ -148,7 +188,7 @@ app.put("/api/questionnaire/:cabinetName", (req, res) => {
 });
 
 // --- New API: créer un dossier ------------------------
-app.post("/api/dossier", async (req, res) => {
+app.post(`${API_PREFIX}/dossier`, async (req, res) => {
   try {
     const payload = req.body;
 
