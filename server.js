@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 const API_PREFIX = process.env.API_PREFIX || "/api";
 
 // Dossier front-end pouvant être personnalisé (ex: "frontend")
-const FRONTEND_DIR = process.env.FRONTEND_DIR || "frontend";
+const FRONTEND_DIR = process.env.FRONTEND_DIR || "Frontend";
 
 // URL back-end accessible depuis le navigateur (override possible)
 const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || null;

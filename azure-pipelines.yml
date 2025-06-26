@@ -52,8 +52,8 @@ stages:
             inputs:
               command: build
               repository: $(imageRepositoryBackend)
-              Dockerfile: $(Build.SourcesDirectory)/s/OptimExCo/Dockerfile
-              buildContext: $(Build.SourcesDirectory)/s/OptimExCo
+              Dockerfile: $(Build.SourcesDirectory)/s/Backend/Dockerfile
+              buildContext: $(Build.SourcesDirectory)/s/Backend
               tags: |
                 $(tag)
                 latest
