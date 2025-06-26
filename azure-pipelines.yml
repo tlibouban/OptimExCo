@@ -26,7 +26,7 @@ resources:
 
 variables:
   # Nom de la connexion Docker (ACR ou Docker Hub)
-  dockerRegistryServiceConnection: "DockerRegistry"
+  dockerRegistryServiceConnection: "DockerHubConnection"
   # Définition des dépôts d'images
   imageRepositoryBackend: "onboardingclient-backend"
   imageRepositoryFrontend: "onboardingclient-frontend"
