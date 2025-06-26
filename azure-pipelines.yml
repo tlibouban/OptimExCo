@@ -1,0 +1,99 @@
+# Azure DevOps pipeline – OnBoardingClient
+# Ce pipeline est stocké dans Azure DevOps mais suit le code hébergé sur GitHub.
+# Il déclenche un build Docker automatique à chaque commit sur la branche main.
+# Prérequis :
+#   1. Un service-connection GitHub nommé "GitHubConnection" (OAuth ou PAT) permettant l'accès au dépôt.
+#   2. Un service-connection Docker (Docker Hub ou ACR) nommé "DockerRegistry" avec droits push.
+#   3. Variables à adapter si besoin : noms d'images, branche par défaut, etc.
+
+name: $(BuildDefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
+
+# Aucune déclencheur direct car on utilise la section resources (ci-bas)
+trigger: none
+
+# Le dépôt GitHub est référencé comme ressource ; le trigger est déclaré ici
+resources:
+  repositories:
+    - repository: githubRepo # alias local
+      type: github
+      name: <GitHub-ORG>/<REPOSITORY> # ← ⚠️ à remplacer
+      ref: refs/heads/main # branche suivie
+      endpoint: GitHubConnection # service connection GitHub
+      trigger: # déclencheurs CI
+        branches:
+          include:
+            - main
+
+variables:
+  # Nom de la connexion Docker (ACR ou Docker Hub)
+  dockerRegistryServiceConnection: "DockerRegistry"
+  # Définition des dépôts d'images
+  imageRepositoryBackend: "onboardingclient-backend"
+  imageRepositoryFrontend: "onboardingclient-frontend"
+  # Tag principal = hash court du commit GitHub
+  tag: "$(Build.SourceVersionShort)"
+
+stages:
+  - stage: Build
+    displayName: Build & Push Docker Images
+    jobs:
+      - job: Build_Images
+        displayName: Build images
+        pool:
+          vmImage: "ubuntu-latest"
+
+        steps:
+          - checkout: githubRepo
+            path: s # le code sera sous $(Build.SourcesDirectory)/s
+
+          # ----- Backend -------------------------------------------------------
+          - task: Docker@2
+            displayName: "Build backend image"
+            inputs:
+              command: build
+              repository: $(imageRepositoryBackend)
+              Dockerfile: $(Build.SourcesDirectory)/s/OptimExCo/Dockerfile
+              buildContext: $(Build.SourcesDirectory)/s/OptimExCo
+              tags: |
+                $(tag)
+                latest
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+          # ----- Frontend ------------------------------------------------------
+          - task: Docker@2
+            displayName: "Build frontend image"
+            inputs:
+              command: build
+              repository: $(imageRepositoryFrontend)
+              Dockerfile: $(Build.SourcesDirectory)/s/Dockerfile
+              buildContext: $(Build.SourcesDirectory)/s
+              tags: |
+                $(tag)
+                latest
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+          # ----- Push images ---------------------------------------------------
+          - task: Docker@2
+            displayName: "Push backend image"
+            inputs:
+              command: push
+              repository: $(imageRepositoryBackend)
+              tags: |
+                $(tag)
+                latest
+              containerRegistry: $(dockerRegistryServiceConnection)
+
+          - task: Docker@2
+            displayName: "Push frontend image"
+            inputs:
+              command: push
+              repository: $(imageRepositoryFrontend)
+              tags: |
+                $(tag)
+                latest
+              containerRegistry: $(dockerRegistryServiceConnection)
+# -------------------------------------------------------------------------
+# Étape de déploiement (optionnelle)
+# Ajoutez ici un stage Deploy si vous souhaitez déployer automatiquement
+# sur un environnement (AKS, Web App for Containers, etc.)
+# -------------------------------------------------------------------------
