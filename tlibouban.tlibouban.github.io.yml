@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - master
+resources:
+  repositories:
+  - repository: self
+variables:
+- name: tag
+  value: "$(Build.BuildId)"
+- name: dockerRegistryServiceConnection
+  value: "DockerHubConnection"
+- name: dockerRepository
+  value: "$(dockerHubNamespace)/onboardingclient-frontend"
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Build and push image
+      inputs:
+        command: buildAndPush
+        repository: "$(dockerRepository)"
+        dockerfile: "$(Build.SourcesDirectory)/Dockerfile"
+        buildContext: "$(Build.SourcesDirectory)"
+        containerRegistry: "$(dockerRegistryServiceConnection)"
+        tags: |
+          $(tag)
+          latest
+
